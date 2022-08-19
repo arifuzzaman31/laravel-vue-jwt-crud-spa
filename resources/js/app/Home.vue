@@ -1,12 +1,14 @@
 <template>
-    <div class="container">
+    <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Home Component</div>
+                <div class="card  text-center">
+                    <div class="card-header">
+                        <h2>Laravel Vue Jwt SPA</h2>
+                    </div>
 
                     <div class="card-body">
-                        I'm an Home component.
+                        It's CRUD operation by Laravel Vue.
                     </div>
                 </div>
             </div>

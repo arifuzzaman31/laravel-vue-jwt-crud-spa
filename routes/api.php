@@ -22,6 +22,7 @@ Route::prefix('auth')->group(function () {
     Route::post('register',[AuthController::class, 'register']);
     Route::post('login',[AuthController::class, 'login']);
     Route::get('refresh', [AuthController::class, 'refresh']);
+    Route::post('checkToken', [AuthController::class, 'checktoken']);
 
     Route::group(['middleware' => 'auth:api'], function(){
         Route::get('user',[AuthController::class, 'user']);

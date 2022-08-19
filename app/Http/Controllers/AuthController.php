@@ -57,10 +57,15 @@ class AuthController extends Controller
     {
         if ($token = $this->guard()->refresh()) {
             return response()
-                ->json(['status' => 'successs'], 200)
+                ->json(['success' => true,'_token'=> $token], 200)
                 ->header('Authorization', $token);
         }
         return response()->json(['error' => 'refresh_token_error'], 401);
+    }
+
+    public function checktoken()
+    {
+        return response()->json(['success' => true], 200);
     }
     private function guard()
     {

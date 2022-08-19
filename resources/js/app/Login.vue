@@ -36,12 +36,16 @@ import axios from 'axios';
         },
 
         mounted(){
-            if(this.$store.state.token != '')
+            if(this.$store.state.token !== '')
             {
                 axios.post(base_url+'api/auth/checkToken',{token : this.$store.state.token})
                     .then(res => {
                         this.loading = false
-                        this.$router.push('/dashboard');
+                        if(res.data.success){
+                            this.$router.push('/dashboard')
+                        } else {
+                            this.$store.commit('setToken',res.data._token)
+                        }
                     })
                     .catch(err => {
                         this.loading = false
@@ -60,6 +64,7 @@ import axios from 'axios';
                         {
                             // console.log(response.data._token)
                             this.$store.commit('setToken',response.data._token)
+                            this.$router.push('/dashboard')
                         }
                     })
                     .catch(err => {
